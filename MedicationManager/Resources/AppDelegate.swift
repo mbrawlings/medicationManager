@@ -63,10 +63,10 @@ extension AppDelegate:UNUserNotificationCenterDelegate {
     
     // this is telling notification what to do if it receives a response
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-        if response.actionIdentifier == "markActionTaken",
+        if response.actionIdentifier == "markTakenAction",
            let id = response.notification.request.content.userInfo["medicationID"] as? String {
             MedicationController.shared.markMedicationTaken(withID: id)
-            completionHandler()
         }
+        completionHandler()
     }
 }
